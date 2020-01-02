@@ -1,8 +1,5 @@
 import { Injectable } from '@nestjs/common';
-
-interface ReadingLog {
-  title: string;
-}
+import { ReadingLog } from '@teqniqly/data';
 
 @Injectable()
 export class AppService {

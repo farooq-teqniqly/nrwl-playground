@@ -22,6 +22,9 @@
     },
     "reading-log-api": {
       "tags": []
+    },
+    "data": {
+      "tags": []
     }
   }
 }

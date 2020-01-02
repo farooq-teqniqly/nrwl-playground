@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-interface ReadingLog {
-  title: string;
-}
+import { ReadingLog } from '@teqniqly/data';
 
 @Component({
   selector: 'tq-root',

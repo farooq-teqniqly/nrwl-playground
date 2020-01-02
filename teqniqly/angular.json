@@ -25,9 +25,7 @@
               "apps/reading-log/src/favicon.ico",
               "apps/reading-log/src/assets"
             ],
-            "styles": [
-              "apps/reading-log/src/styles.scss"
-            ],
+            "styles": ["apps/reading-log/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -87,10 +85,7 @@
               "apps/reading-log/tsconfig.app.json",
               "apps/reading-log/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/reading-log/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/reading-log/**"]
           }
         },
         "test": {
@@ -124,13 +119,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/reading-log-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/reading-log-e2e/**"
-            ]
+            "tsConfig": ["apps/reading-log-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/reading-log-e2e/**"]
           }
         }
       }
@@ -148,9 +138,7 @@
             "outputPath": "dist/apps/reading-log-api",
             "main": "apps/reading-log-api/src/main.ts",
             "tsConfig": "apps/reading-log-api/tsconfig.app.json",
-            "assets": [
-              "apps/reading-log-api/src/assets"
-            ]
+            "assets": ["apps/reading-log-api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -179,10 +167,7 @@
               "apps/reading-log-api/tsconfig.app.json",
               "apps/reading-log-api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/reading-log-api/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/reading-log-api/**"]
           }
         },
         "test": {
@@ -190,6 +175,31 @@
           "options": {
             "jestConfig": "apps/reading-log-api/jest.config.js",
             "tsConfig": "apps/reading-log-api/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "data": {
+      "root": "libs/data",
+      "sourceRoot": "libs/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/data/tsconfig.lib.json",
+              "libs/data/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/data/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/data/jest.config.js",
+            "tsConfig": "libs/data/tsconfig.spec.json"
           }
         }
       }
