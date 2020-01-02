@@ -7,11 +7,7 @@
   <h1>Welcome to {{ title }}!</h1>
 </header>
 <main>
-  <ul>
-    <li data-cy="reading-log" *ngFor="let l of readingLogs">
-      {{l.title}}
-    </li>
-  </ul>
+  <tq-reading-log-list [readingLogs]="readingLogs"></tq-reading-log-list>
   <button data-cy="add-reading-log" (click)="addReadingLog()">Add Reading Log</button>
 </main>
 

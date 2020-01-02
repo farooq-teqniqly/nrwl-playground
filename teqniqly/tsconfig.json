@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@teqniqly/data": ["libs/data/src/index.ts"]
+      "@teqniqly/data": ["libs/data/src/index.ts"],
+      "@teqniqly/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

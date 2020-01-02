@@ -14,16 +14,13 @@
     "reading-log": {
       "tags": []
     },
-    "reading-log-api-reading-log-api": {
-      "tags": []
-    },
-    "apps-reading-log-ap": {
-      "tags": []
-    },
     "reading-log-api": {
       "tags": []
     },
     "data": {
+      "tags": []
+    },
+    "ui": {
       "tags": []
     }
   }
