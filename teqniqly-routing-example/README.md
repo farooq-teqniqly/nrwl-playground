@@ -14,6 +14,11 @@ This project was generated using [Nx](https://nx.dev).
 
 [Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
 
+## Setting up a new Angular app
+1. `npx create-nx-workspace app-name`
+2. `ng add @nrwl/angular`
+3. `ng g @nrwl/angular:application todos`
+
 ## Adding capabilities to your workspace
 
 Nx supports many plugins which add capabilities for developing different types of applications and different tools.

@@ -1,41 +1,39 @@
 {
   "version": 1,
   "projects": {
-    "routing-example-app": {
+    "routing-example": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       },
-      "root": "routing-example-app",
-      "sourceRoot": "routing-example-app/src",
+      "root": "apps/routing-example",
+      "sourceRoot": "apps/routing-example/src",
       "prefix": "tq",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/routing-example-app",
-            "index": "routing-example-app/src/index.html",
-            "main": "routing-example-app/src/main.ts",
-            "polyfills": "routing-example-app/src/polyfills.ts",
-            "tsConfig": "routing-example-app/tsconfig.app.json",
+            "outputPath": "dist/apps/routing-example",
+            "index": "apps/routing-example/src/index.html",
+            "main": "apps/routing-example/src/main.ts",
+            "polyfills": "apps/routing-example/src/polyfills.ts",
+            "tsConfig": "apps/routing-example/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "routing-example-app/src/favicon.ico",
-              "routing-example-app/src/assets"
+              "apps/routing-example/src/favicon.ico",
+              "apps/routing-example/src/assets"
             ],
-            "styles": [
-              "routing-example-app/src/styles.scss"
-            ],
+            "styles": ["apps/routing-example/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "routing-example-app/src/environments/environment.ts",
-                  "with": "routing-example-app/src/environments/environment.prod.ts"
+                  "replace": "apps/routing-example/src/environments/environment.ts",
+                  "with": "apps/routing-example/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -65,66 +63,79 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "routing-example-app:build"
+            "browserTarget": "routing-example:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "routing-example-app:build:production"
+              "browserTarget": "routing-example:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "routing-example-app:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "routing-example-app/src/test.ts",
-            "polyfills": "routing-example-app/src/polyfills.ts",
-            "tsConfig": "routing-example-app/tsconfig.spec.json",
-            "karmaConfig": "routing-example-app/karma.conf.js",
-            "assets": [
-              "routing-example-app/src/favicon.ico",
-              "routing-example-app/src/assets"
-            ],
-            "styles": [
-              "routing-example-app/src/styles.scss"
-            ],
-            "scripts": []
+            "browserTarget": "routing-example:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "routing-example-app/tsconfig.app.json",
-              "routing-example-app/tsconfig.spec.json",
-              "routing-example-app/e2e/tsconfig.json"
+              "apps/routing-example/tsconfig.app.json",
+              "apps/routing-example/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/routing-example/**"]
           }
         },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        "test": {
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "protractorConfig": "routing-example-app/e2e/protractor.conf.js",
-            "devServerTarget": "routing-example-app:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "routing-example-app:serve:production"
-            }
+            "jestConfig": "apps/routing-example/jest.config.js",
+            "tsConfig": "apps/routing-example/tsconfig.spec.json",
+            "setupFile": "apps/routing-example/src/test-setup.ts"
           }
         }
       }
-    }},
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    },
+    "routing-example-e2e": {
+      "root": "apps/routing-example-e2e",
+      "sourceRoot": "apps/routing-example-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/routing-example-e2e/cypress.json",
+            "tsConfig": "apps/routing-example-e2e/tsconfig.e2e.json",
+            "devServerTarget": "routing-example:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "routing-example:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/routing-example-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/routing-example-e2e/**"]
+          }
+        }
+      }
+    }
   },
-  "defaultProject": "routing-example-app"
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "routing-example"
 }

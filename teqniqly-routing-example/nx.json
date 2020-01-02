@@ -7,5 +7,12 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "routing-example-e2e": {
+      "tags": []
+    },
+    "routing-example": {
+      "tags": []
+    }
+  }
 }
