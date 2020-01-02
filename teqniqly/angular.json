@@ -25,7 +25,9 @@
               "apps/reading-log/src/favicon.ico",
               "apps/reading-log/src/assets"
             ],
-            "styles": ["apps/reading-log/src/styles.scss"],
+            "styles": [
+              "apps/reading-log/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -63,7 +65,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "reading-log:build"
+            "browserTarget": "reading-log:build",
+            "proxyConfig": "apps/reading-log/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -84,7 +87,10 @@
               "apps/reading-log/tsconfig.app.json",
               "apps/reading-log/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/reading-log/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/reading-log/**"
+            ]
           }
         },
         "test": {
@@ -118,8 +124,72 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/reading-log-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/reading-log-e2e/**"]
+            "tsConfig": [
+              "apps/reading-log-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/reading-log-e2e/**"
+            ]
+          }
+        }
+      }
+    },
+    "reading-log-api": {
+      "root": "apps/reading-log-api",
+      "sourceRoot": "apps/reading-log-api/src",
+      "projectType": "application",
+      "prefix": "reading-log-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/reading-log-api",
+            "main": "apps/reading-log-api/src/main.ts",
+            "tsConfig": "apps/reading-log-api/tsconfig.app.json",
+            "assets": [
+              "apps/reading-log-api/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/reading-log-api/src/environments/environment.ts",
+                  "with": "apps/reading-log-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "reading-log-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/reading-log-api/tsconfig.app.json",
+              "apps/reading-log-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/reading-log-api/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/reading-log-api/jest.config.js",
+            "tsConfig": "apps/reading-log-api/tsconfig.spec.json"
           }
         }
       }

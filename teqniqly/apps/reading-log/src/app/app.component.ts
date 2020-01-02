@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 interface ReadingLog {
   title: string;
@@ -11,9 +12,17 @@ interface ReadingLog {
 })
 export class AppComponent {
   title = 'Reading Log';
-  readingLogs: ReadingLog[] = [{title: 'Something Deeply Hidden'}, {title: 'The Federalist Papers'}];
+  readingLogs: ReadingLog[] = [];
+
+  constructor(private http: HttpClient) {
+    this.fetchReadingLogs();
+  }
 
   addReadingLog(): void {
-    this.readingLogs.push({title: `Book ${Math.floor(Math.random() * 1000)}`});
+    this.http.post('api/readinglogs', {}).subscribe(() => this.fetchReadingLogs());
+  }
+
+  fetchReadingLogs(): void {
+    this.http.get<ReadingLog[]>('api/readinglogs').subscribe(logs => this.readingLogs = logs);
   }
 }
