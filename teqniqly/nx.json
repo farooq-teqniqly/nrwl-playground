@@ -1,5 +1,5 @@
 {
-  "npmScope": "reading-log",
+  "npmScope": "teqniqly",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -7,5 +7,12 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "reading-log-e2e": {
+      "tags": []
+    },
+    "reading-log": {
+      "tags": []
+    }
+  }
 }
