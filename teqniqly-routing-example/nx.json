@@ -13,6 +13,9 @@
     },
     "routing-example": {
       "tags": []
+    },
+    "app-shel": {
+      "tags": []
     }
   }
 }

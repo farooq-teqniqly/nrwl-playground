@@ -123,6 +123,37 @@
           }
         }
       }
+    },
+    "app-shel": {
+      "projectType": "library",
+      "root": "libs/app-shel",
+      "sourceRoot": "libs/app-shel/src",
+      "prefix": "teqniqly-routing-example",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/app-shel/tsconfig.lib.json",
+              "libs/app-shel/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/app-shel/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/app-shel/jest.config.js",
+            "tsConfig": "libs/app-shel/tsconfig.spec.json",
+            "setupFile": "libs/app-shel/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
