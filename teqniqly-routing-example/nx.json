@@ -1,0 +1,21 @@
+{
+  "npmScope": "teqniqly-routing-example",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "routing-example-e2e": {
+      "tags": []
+    },
+    "routing-example": {
+      "tags": []
+    },
+    "app-shel": {
+      "tags": []
+    }
+  }
+}
